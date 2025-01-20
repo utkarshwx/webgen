@@ -1,9 +1,9 @@
 import { IconArrowLeft } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import HelpGuide from "../components/ui/helpguidprompt";
 
 function GeneratePage() {
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 dark:bg-neutral-900 dark:text-white">
       <div className="p-8">
@@ -16,73 +16,116 @@ function GeneratePage() {
           </button>
           <h1 className="text-2xl font-bold">Image Generator</h1>
         </div>
+
         <div className="grid md:grid-cols-2 gap-8">
           {/* Left Panel */}
           <div className="p-6 bg-white dark:bg-neutral-900 rounded-lg shadow-lg">
+            {/* Component Type */}
             <div className="mb-4">
               <label className="block text-sm font-medium">Component Type</label>
               <select className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700">
-                <option>Header Image</option>
-                <option>Footer Image</option>
+                <option                     >Header/Banner Images</option>
+                <option>Card Images</option>
+                <option>Profile Images</option>
+                <option>Background Images</option>
+                <option>Thumbnails</option>
+                <option>Product Images</option>
+                <option>Icons</option>
+                <option>Infographic Images</option>
+                <option>Testimonials/Review Images</option>
+                <option>CTA Images</option>
               </select>
             </div>
+
+            {/* Aspect Ratio */}
             <div className="mb-4">
-              <label className="block text-sm font-medium">Width (px)</label>
-              <input
-                type="number"
+              <label className="block text-sm font-medium">Aspect Ratio</label>
+              <select className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700">
+                <option>1:1</option>
+                <option>16:9</option>
+                <option>9:16</option>
+                <option>5:4</option>
+                <option>4:5</option>
+                <option>3:2</option>
+                <option>2:3</option>
+              </select>
+            </div>
+
+            {/* Negative Prompt */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium">Negative Prompt</label>
+              <textarea
                 className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700"
-                placeholder="1200"
-              />
+                placeholder="Describe what you do NOT want in the image..."
+              ></textarea>
             </div>
+
+            {/* Output Format */}
             <div className="mb-4">
-              <label className="block text-sm font-medium">Height (px)</label>
-              <input
-                type="number"
-                className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700"
-                placeholder="630"
-              />
+              <label className="block text-sm font-medium">Output Format</label>
+              <select className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700">
+                <option>jpeg</option>
+                <option>png</option>
+              </select>
             </div>
+
+            {/* Prompt */}
             <div className="mb-4">
-              <label className="block text-sm font-medium">Color Scheme</label>
-              <div className="flex gap-2 mt-2 items-start justify-between">
-                {[
-                { name: "blue", class: "bg-blue-500" },
-                { name: "green", class: "bg-green-500" },
-                { name: "purple", class: "bg-purple-500" },
-                { name: "red", class: "bg-red-500" },
-                { name: "yellow", class: "bg-yellow-500" },
-                { name: "gray", class: "bg-gray-500" },
-                ].map((color) => (
-                  <div
-                    key={color.name}
-                    className={`h-6 w-6 rounded-full ${color.class} cursor-pointer`}
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium">Style Preset</label>
-              <div className="flex gap-4 mt-2">
-                {["Minimal", "Modern", "Bold"].map((preset) => (
-                  <button
-                    key={preset}
-                    className="py-2 px-4 border rounded-md dark:bg-neutral-800 dark:border-neutral-700"
-                  >
-                    {preset}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Description</label>
+              <label className="block text-sm font-medium">Prompt</label>
               <textarea
                 className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700"
                 placeholder="Describe the image you want to generate..."
               ></textarea>
             </div>
+
+            {/* Color Scheme */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium">Color Scheme</label>
+              <div className="flex gap-10 mt-2 items-start">
+                {[
+                  { name: "blue", class: "bg-blue-500" },
+                  { name: "green", class: "bg-green-500" },
+                  { name: "purple", class: "bg-purple-500" },
+                  { name: "red", class: "bg-red-500" },
+                  { name: "yellow", class: "bg-yellow-500" },
+                  { name: "gray", class: "bg-gray-500" },
+                ].map((color) => (
+                  <div key={color.name} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id={color.name}
+                      name="colorScheme"
+                      value={color.name}
+                      className="hidden peer"
+                    />
+                    <label
+                      htmlFor={color.name}
+                      className={`h-6 w-6 rounded-full ${color.class} cursor-pointer peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-500`}
+                    ></label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Style Preset */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium">Style Preset</label>
+              <select className="w-full mt-2 p-2 border rounded dark:bg-neutral-800 dark:border-neutral-700">
+                <option>Minimalist</option>
+                <option>Modern</option>
+                <option>Corporate</option>
+                <option>Creative</option>
+                <option>Geometric</option>
+                <option>Sketch</option>
+              </select>
+            </div>
+
             <button className="mt-4 w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
               Generate Image
             </button>
+
+            {/* Help Guide */}
+            <HelpGuide/>
           </div>
 
           {/* Right Panel */}
@@ -92,7 +135,7 @@ function GeneratePage() {
             </div>
             <div className="w-full mt-4">
               <div className="w-full bg-gray-300 dark:bg-neutral-800 rounded-full h-4">
-                <div className="bg-blue-500 h-4 rounded-full" style={{ width: "100%" }}></div>
+                <div className="bg-blue-500 h-4 rounded-full" style={{ width: "76%" }}></div>
               </div>
               <p className="text-sm mt-2 text-center">Generation Progress: 75%</p>
             </div>

@@ -1,7 +1,7 @@
 function ApiDocumentation() {
   return (
     <div className="min-h-screen px-6 py-4 bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-white">
-      <div className="max-w-5xl mx-auto bg-white dark:bg-neutral-800 rounded-lg shadow-md p-6 space-y-6">
+      <div className="w-full mx-auto bg-white dark:bg-neutral-800 rounded-lg shadow-md p-6 space-y-6">
         <h1 className="text-3xl font-semibold">Getting Started</h1>
         <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded-md shadow-sm">
           <p className="mb-4">To start using our AI Image Generation API, you'll need an API key. You can get one by signing up for an account.</p>

@@ -23,9 +23,9 @@ const Modal=forwardRef(function Dialog({children}: ModalProps, ref) {
     <dialog ref={modalRef} className="modal bg-transparent p-4">
         <button
           onClick={() => modalRef.current?.close()}
-          className="absolute top-1 right-0 bg-transparent bg-lime-400 text-gray-600 rounded-full hover:bg-gray-300 hover:text-gray-800"
+          className="absolute top-1 right-0  bg-lime-400 text-gray-600 rounded-full hover:bg-gray-300 hover:text-gray-800"
         >
-            <IconX size={16} />
+            <IconX size={20} />
         </button>
         {children}
         <div className="content">
