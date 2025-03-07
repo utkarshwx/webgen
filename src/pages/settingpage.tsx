@@ -74,7 +74,7 @@ function SettingsPage() {
                 name="fullName"
                 value={userData.fullName}
                 onChange={(e) => setUserData({ ...userData, fullName: e.target.value })}
-                className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 dark:bg-neutral-800 dark:text-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
@@ -87,7 +87,7 @@ function SettingsPage() {
                 name="email"
                 value={userData.email}
                 onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-                className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 text-sm border dark:bg-neutral-800 dark:text-gray-300 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
@@ -100,7 +100,7 @@ function SettingsPage() {
                 name="role"
                 value={userData.organization}
                 onChange={(e) => setUserData({ ...userData, role: e.target.value })}
-                className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 text-sm border dark:bg-neutral-800 dark:text-gray-300 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 />
             </div>
             <div>
@@ -113,7 +113,7 @@ function SettingsPage() {
                 name="role"
                 value={userData.role}
                 onChange={(e) => setUserData({ ...userData, role: e.target.value })}
-                className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 text-sm border dark:bg-neutral-800 dark:text-gray-300 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 />
             </div>
           </div>
@@ -178,7 +178,7 @@ function SettingsPage() {
             type="text"
             readOnly
             value={userData.apiKey}
-            className="w-2/3 px-4 py-2 text-sm border border-gray-300 rounded-md mr-2"
+            className="w-2/3 px-4 py-2 text-sm border dark:bg-neutral-800 dark:text-gray-300 border-gray-300 rounded-md mr-2"
           />
           <button
             onClick={regenerateApiKey}

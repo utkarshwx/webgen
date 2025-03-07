@@ -1,65 +1,36 @@
 import StatCard from "../components/ui/startcard";
 import ImageCard from "../components/ui/imagecard";
 import GenerationBar from "../components/ui/generationbar";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { fetchDashboardImageData } from "../store/Thunk/dashboardAction";
 
 const Dashboard = () => {
-  const generationHistory = [
-    { name: "Mon", value: 75 },
-    { name: "Tue", value: 45 },
-    { name: "Wed", value: 90 },
-  ];
-
-  const popularCategories = [
-    { name: "Headers", value: 65 },
-    { name: "Profiles", value: 40 },
-    { name: "Cards", value: 85 },
-  ];
-
-  const startcarddata = [
-    { title: "Images Generated", value: "1,234", percentageChange: "12" },
-    { title: "API creadits", value: "1234", percentageChange: "834", color: "green" },
-    { title: "Projects", value: "12", percentageChange: "Active", color: "red" },
-    { title: "Storage Use", value: "15GB", percentageChange: "12%", color: "yellow" },
-    ];
-  const cardData = [
-    {
-      image: 'https://picsum.photos/id/237/200/300',
-      title: 'Header Image',
-      subtitle: 'Generated 2h ago',
-    },
-    {
-    image: 'https://picsum.photos/id/237/200/300',
-      title: 'Profile Picture',
-      subtitle: 'Generated 3h ago',
-    },
-    {
-      image: 'https://picsum.photos/id/237/200/300',
-      title: 'Card Background',
-      subtitle: 'Generated 5h ago',
-    },
-    {
-      image: 'https://picsum.photos/id/237/200/300',
-      title: 'Card Background',
-      subtitle: 'Generated 5h ago',
-    },
-  ];
+  const {startcarddata,generationHistory,popularCategories,cardData}= useSelector((state:RootState) => state.dashboardState);
+  const dispatch=useDispatch<AppDispatch>()
+  const axiosPrivate=useAxiosPrivate()
+  useEffect(() => {
+    dispatch(fetchDashboardImageData({axiosPrivate, page: 1})); // Fetch the first page with 10 items
+  }, [dispatch]);  
   return (
     <main className="flex-1 p-8">
     {/* Overview Section */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    {startcarddata.length>0&&<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {startcarddata.map((data, i) => (
             <StatCard key={i} {...data} />
         ))}
-    </div>
+    </div>}
     {/* Recent Generations */}
-    <section className="mb-8">
+    {<section className="mb-8">
         <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-4">Recent Generations</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {cardData.map((data, i) => (
             <ImageCard key={i} {...data} />
         ))}
         </div>
-    </section>
+    </section>}
 
     {/* Data Visualization */}
     <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">

@@ -28,9 +28,6 @@ const Modal=forwardRef(function Dialog({children}: ModalProps, ref) {
             <IconX size={20} />
         </button>
         {children}
-        <div className="content">
-            <button onClick={() => modalRef.current?.close()}>Close</button>
-        </div>
     </dialog>,
     document.getElementById('modal') as HTMLElement
   )

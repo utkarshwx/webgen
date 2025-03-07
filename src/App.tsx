@@ -7,7 +7,7 @@ import {RootLayout} from './components/layouts/RootLayout'
 import TemplateGalleryLoading from './components/splash/templateloading'
 //import APIDocumentationLoading from './components/splash/apiloading'
 import { useSelector } from 'react-redux'
-import LoginPage from './pages/loginpage'
+import AuthPage from './pages/authpage'
 import Dashboard from './pages/dashboard'
 import ProjectPage from './pages/projectpage'
 import GeneratePage from './pages/generatepage'
@@ -15,9 +15,11 @@ import SettingsPage from './pages/settingpage'
 import ApiDocumentation from './pages/apipage'
 import BillingPage from './pages/billingpage'
 import PricingPage from './pages/pricingpage'
+import ProjectDetailsPage from './pages/projectdetailspage'
+import NotFoundPage from './pages/notfound'
 export default function App() {
   const isAuthenticated = useSelector((state: { authState: { isAuthenticated: boolean } }) => state.authState.isAuthenticated)
-  console.log(isAuthenticated)
+  //console.log(isAuthenticated)
   // ProtectedRoute Component
   const ProtectedRoute = ({ isAuthenticated, children }: { isAuthenticated: boolean, children: React.ReactNode }) => {
     return isAuthenticated ? children : <Navigate to="/login" />;
@@ -56,8 +58,12 @@ export default function App() {
           element: <BillingPage/>
         },
         {
-          path: 'generate',
+          path: 'generate/:id',
           element:<GeneratePage/>
+        },
+        {
+          path:'project/:id',
+          element:<ProjectDetailsPage/>
         }
       ]
     },
@@ -67,8 +73,12 @@ export default function App() {
     },
     {
       path: 'login',
-      element: <LoginPage/>
+      element: <AuthPage/>
     },
+    {
+      path: '*', // Catch-all route
+      element: <NotFoundPage /> // Display the 404 component
+    }
   ])
   return (
     <><RouterProvider router={router}/></>

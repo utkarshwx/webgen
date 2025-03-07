@@ -80,10 +80,6 @@ export function RootLayout() {
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
               ))}
-              <button onClick={()=> darkModeHandler()}>{dark ? 
-              <IconSun className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />: 
-              <IconMoon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />} 
-              </button>
             </div>
           </div>
           <div>
@@ -108,6 +104,13 @@ export function RootLayout() {
       {/* Scrollable Outlet */}
       <div className="flex-1 overflow-y-auto">
         <Outlet />
+        <button onClick={()=> darkModeHandler()} 
+        className="absolute top-4 right-4 p-1 bg-transparent text-gray-600 rounded-s hover:bg-lime-300 dark:hover:bg-purple-950">
+          {dark ? 
+          <IconSun className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />: 
+          <IconMoon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+          } 
+        </button>
       </div>
     </div>
   );
@@ -124,7 +127,7 @@ export const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium text-black dark:text-white whitespace-pre"
       >
-        Acet Labs
+        WebGen
       </motion.span>
     </NavLink>
   );

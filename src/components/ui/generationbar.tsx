@@ -26,7 +26,7 @@ const GenerationBar: React.FC<GenerationBarProps> = ({title,data,color}) => {
     window.addEventListener("resize", updateDimensions);
 
     return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
+  }, [chartContainerRef.current,setDimensions]);
 
   return (
     <div
@@ -42,10 +42,10 @@ const GenerationBar: React.FC<GenerationBarProps> = ({title,data,color}) => {
           height={dimensions.height}
           data={data}
           layout="vertical"
-          margin={{ top: 10, right: 20, left: 20, bottom: 10 }}
+          margin={{ top: 10, right: 35, left:20, bottom: 10 }}
         >
           <XAxis type="number" hide />
-          <YAxis type="category" dataKey="name" width={50} />
+          <YAxis type="category" dataKey="name" width={40} />
           <Tooltip />
           <Bar
             dataKey="value"

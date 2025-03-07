@@ -4,7 +4,7 @@ import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
 const PricingPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
 
   const plans = [
@@ -40,7 +40,7 @@ const PricingPage = () => {
       isHighlighted: false,
     },
   ];
-
+    
   const handleSelectPlan = (index: number) => {
     setSelectedPlan(index);
   };
