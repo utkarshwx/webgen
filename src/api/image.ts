@@ -70,8 +70,8 @@ export const handleGenerateAction=async (_previousState: FormStateGenerateImage,
         dispatch(projectActions.addImage({projectId:id,image:response.data.data}))
         return {img: response.data.data}
     } catch (error:any) {
-        console.log(error.response.data)
-        return {error: error.response.data.error.message, prevValue: {
+        console.log(error)
+        return {error: error?.response?.data?.error?.message, prevValue: {
           componentType: componentType as ComponentType | undefined, 
           aspectRatio, 
           negativePrompt: negativePrompt?.toString() || undefined, 

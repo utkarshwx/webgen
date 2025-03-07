@@ -25,7 +25,7 @@ export const login = async (_prevData: FormStateLogin,formData: FormData,dispatc
       };
     }
     try {
-      const response = await axios.post("api/v1/auth/signin",{email,password},{withCredentials: true});
+      const response = await axios.post("api/v1/auth/signin",{email,password});
       const res = response.data;
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("token", res.data.token);
