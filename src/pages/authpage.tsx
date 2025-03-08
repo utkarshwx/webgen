@@ -46,7 +46,7 @@ const AuthPage = () => {
               id="email"
               type="email"
               name="email"
-              value={data?.email}
+              defaultValue={data?.email}
               className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:text-gray-200 dark:border-neutral-600"
               required
             />
@@ -59,7 +59,7 @@ const AuthPage = () => {
               id="password"
               type="password"
               name="password"
-              value={data?.password}
+              defaultValue={data?.password}
               className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:text-gray-200 dark:border-neutral-600"
               required
             />
@@ -73,7 +73,7 @@ const AuthPage = () => {
                 id="confirmPassword"
                 type="password"
                 name="confirmPassword"
-                value={data?.confirmPassword}
+                defaultValue={data?.confirmPassword}
                 className="mt-1 block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:text-gray-200 dark:border-neutral-600"
                 required
               />
