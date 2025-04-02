@@ -1,7 +1,7 @@
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 import generateImagePayload from "../utils/generateimageprompt";
 import { ComponentType,AspectRatio,StylePreset,OutputFormat} from "../utils/payloadtyles";
-import { Axios } from "axios";
+import { Axios, AxiosError } from "axios";
 import { projectActions } from "../store/project-slice";
 import { AppDispatch } from "../store";
 import { FormState } from "./project";
@@ -69,9 +69,10 @@ export const handleGenerateAction=async (_previousState: FormStateGenerateImage,
         console.log(response.data)
         dispatch(projectActions.addImage({projectId:id,image:response.data.data}))
         return {img: response.data.data}
-    } catch (error:any) {
+    } catch (error:unknown) {
         console.log(error)
-        return {error: error?.response?.data?.error?.message, prevValue: {
+        const axiosError = error as AxiosError<any>;
+        return {error: axiosError?.response?.data?.error?.message, prevValue: {
           componentType: componentType as ComponentType | undefined, 
           aspectRatio, 
           negativePrompt: negativePrompt?.toString() || undefined, 

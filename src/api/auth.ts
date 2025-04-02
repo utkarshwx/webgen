@@ -33,8 +33,10 @@ export const login = async (_prevData: FormStateLogin,formData: FormData,dispatc
       dispatch(authActions.login({token:res.data.token, rtoken:res.data.rtoken}));
       navigate("/");
       return { error: undefined, data: {} };
-    } catch (error:any) {
-      const errorMessage=error?.response?.data?.error?.message || error?.message || "Failed to login";
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : (error as { response?: { data?: { error?: { message: string } } } })?.response?.data?.error?.message || "Failed to login";
       return { error:errorMessage, data: { email: email?.toString(), password: password?.toString() } };
     }
   };
