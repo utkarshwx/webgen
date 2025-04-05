@@ -27,7 +27,10 @@ const AuthPage = () => {
     {error:undefined, data: {}});
   const { error, data } = isLogin ? loginState : registerState;
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-neutral-900">
+    <div 
+    className="flex items-center justify-center h-screen bg-gray-100 dark:bg-neutral-900"
+    style={{ backgroundImage: "url('https://res.cloudinary.com/dkon1kh9h/image/upload/v1743595137/6794be25f9eeb88fc50858f8/67ba1972a51ede1ae26f7fdc/iq2jnnpxcgilehorbopc.jpg')" }}
+    >
       <div className="bg-white dark:bg-neutral-800 p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
           {isLogin ? "Login" : "Register"}

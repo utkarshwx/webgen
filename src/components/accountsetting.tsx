@@ -6,10 +6,10 @@ import { FormStateUser, handleFormSubmitUser } from "../api/user";
 import SettingsLoading from "./splash/settingloading";
 import { userActions } from "../store/user-slice";
 import useFetchUser from "../hooks/useFetchUser";
-
-
+import useAuth from "../hooks/useAuth";
 
 export default function AccountSettings() {
+  const {logout}=useAuth();
   const {user,loading,error}=useFetchUser()
   const axiosPrivate = useAxiosPrivate();
   const dispatch = useDispatch<AppDispatch>();
@@ -148,6 +148,12 @@ export default function AccountSettings() {
           {loadingUpdate ? 'Saving...' : 'Save Changes'}
         </button>
       </form>
+      <button 
+          onClick={logout}
+          className="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        >
+          logout
+      </button>
     </div>
   );
 }

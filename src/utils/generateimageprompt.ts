@@ -44,9 +44,9 @@ export default function generateImagePayload(payload: ImagePayload):ReturnPayloa
     const selectedKeywords = styleModifier ? getRandomKeywords(styleModifier.keywords, 3) : [];
 
     const compiledPrompt = `
-    ${componentDefaults?.basePrompt}.
-    ${payload.prompt || ''} ${payload.colorScheme?.length ?? 0 > 0 ? colorSchemeDescription : ''}.
-    Style: ${styleDescription}. ${selectedKeywords.join(', ')}.
+    ${componentDefaults?.basePrompt}
+    ${payload.prompt || ''} ${payload.colorScheme?.length ?? 0 > 0 ? colorSchemeDescription : ''}
+    Style: ${styleDescription} ${selectedKeywords.join(', ')}
     `.trim();
 
     
@@ -56,6 +56,7 @@ export default function generateImagePayload(payload: ImagePayload):ReturnPayloa
         aspect_ratio: payload.aspectRatio || componentDefaults.defaultRatio,
         output_format: payload.outputFormat || OutputFormat.JPEG,
     };
+    console.log(returnPayload);
 
     return returnPayload;
 }

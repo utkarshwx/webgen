@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Subscription, userActions } from "../user-slice";
 import { Axios } from "axios";
+//import { axiosPrivate } from "../../api/axios";
 
 interface FetchUserParams {
     axiosPrivate: Axios;
@@ -74,5 +75,18 @@ const updateCredits = createAsyncThunk(
         }
     }
 );
+//Upade Api Key
+const updateApiKey=createAsyncThunk(
+    'user/upadateapikey',
+    async({axiosPrivate}:FetchUserParams,{dispatch})=>{
+        try {
+            const response=await axiosPrivate.get('api/v1/auth/reset-api-key');
+            dispatch(userActions.updateApiKey(response.data.data.apiKey));
+        } catch (error:any) {
+            dispatch(userActions.setError(error.response?.data?.message || 'Failed to update apikey'));
+            console.error('Updating credits failed:', error);
+        }
+    }
+)
 
-export { fetchUser, updateUser, updateSubscription, updateCredits };
+export { fetchUser, updateUser, updateSubscription, updateCredits,updateApiKey};

@@ -1,6 +1,6 @@
 import {Navigate, RouterProvider, createBrowserRouter} from 'react-router-dom'
 import {RootLayout} from './components/layouts/RootLayout'
-//import DashboardLoading from './components/splash/dashboardloading'
+import DashboardLoading from './components/splash/dashboardloading'
 //import SettingsLoading from './components/splash/settingloading'
 //import BillingLoading from './components/splash/billingloading'
 //import ProjectLoading from './components/splash/projectloading'
@@ -17,10 +17,15 @@ import BillingPage from './pages/billingpage'
 import PricingPage from './pages/pricingpage'
 import ProjectDetailsPage from './pages/projectdetailspage'
 import NotFoundPage from './pages/notfound'
+import useAuth from './hooks/useAuth'
 export default function App() {
+  const {status}=useAuth()
   const isAuthenticated = useSelector((state: { authState: { isAuthenticated: boolean } }) => state.authState.isAuthenticated)
   //console.log(isAuthenticated)
   // ProtectedRoute Component
+  if (status === 'loading') {
+    return <DashboardLoading/>;
+  }
   const ProtectedRoute = ({ isAuthenticated, children }: { isAuthenticated: boolean, children: React.ReactNode }) => {
     return isAuthenticated ? children : <Navigate to="/login" />;
   };

@@ -105,7 +105,7 @@ export function RootLayout() {
       <div className="flex-1 overflow-y-auto">
         <Outlet />
         <button onClick={()=> darkModeHandler()} 
-        className="absolute top-4 right-4 p-1 bg-transparent text-gray-600 rounded-s hover:bg-lime-300 dark:hover:bg-purple-950">
+        className="fixed md:absolute bottom-4 md:bottom-auto md:top-4 right-4 p-1 bg-transparent text-gray-600 rounded-s hover:bg-lime-300 dark:hover:bg-purple-950">
           {dark ? 
           <IconSun className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />: 
           <IconMoon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
@@ -121,13 +121,17 @@ export const Logo = () => {
       to="./"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
-      <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
+      <img 
+      src="/logo.png" 
+      alt="WebGen Logo"
+      className="h-5 w-6 flex-shrink-0"
+      />
       <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="font-medium text-black dark:text-white whitespace-pre"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="font-medium text-black dark:text-white whitespace-pre"
       >
-        WebGen
+      WebGen
       </motion.span>
     </NavLink>
   );
@@ -138,7 +142,11 @@ export const LogoIcon = () => {
       to="./"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
-      <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
+      <img 
+      src="/logo.png" 
+      alt="WebGen Logo"
+      className="h-5 w-6 flex-shrink-0"
+      />
     </NavLink>
   );
 };

@@ -7,7 +7,7 @@ const useRefreshToken = () => {
 
   const refresh = async () => {
     try {
-      const response = await axios.get('/users/refreshToken', {
+      const response = await axios.get('/api/v1/auth/refresh-token', {
         withCredentials: true,
       });
 
@@ -18,6 +18,8 @@ const useRefreshToken = () => {
       return response.data.accessToken;
     } catch (error) {
       console.error('Failed to refresh token:', error);
+      // When refresh token fails, logout the user
+      dispatch(authActions.logout());
       throw error; // Re-throw the error for handling in the calling code
     }
   };

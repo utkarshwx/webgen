@@ -101,7 +101,7 @@ export enum ComponentType {
   
   export const STYLE_MODIFIERS: Record<StylePreset, StyleModifier> = {
   [StylePreset.MINIMALIST]: {
-    description: 'minimalist web design, ample white space, essential elements only, clean typography, clear hierarchy, subtle shadows, high contrast, modern simplicity',
+    description: 'minimalist web design, ample white space, essential elements only, clear hierarchy, high contrast, modern simplicity',
     keywords: [
       'minimalist', 'clean lines', 'whitespace', 'essential', 
       'balanced composition', 'subtle gradients', 'high contrast',

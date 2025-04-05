@@ -74,7 +74,12 @@ const userSlice = createSlice({
         setError(state, action: PayloadAction<string>) {
             state.error = action.payload;
             state.loading = false;
-        }
+        },
+        updateApiKey(state, action: PayloadAction<string>) {
+            if (state.user) {
+                state.user.apiKey = action.payload;
+            }
+        },
     }
 });
 
